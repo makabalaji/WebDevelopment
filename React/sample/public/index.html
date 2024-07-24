@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CROP YIELD PREDICTION</title>
+        <style>
+            body {
+                background-image: url("IMAGES/CROP1.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                color: #333;
+            }
+            .main-container {
+                background: rgba(255, 255, 255, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                width: 80%;
+                max-width: 1200px;
+            }
+            .form-container, .table-container {
+                flex: 1;
+                margin: 10px;
+            }
+            .form-container {
+                max-width: 400px;
+            }
+            .username {
+                color: red;
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            label {
+                font-size: 18px;
+                display: block;
+                margin-bottom: 5px;
+            }
+            select, input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+            input[type="submit"], input[type="reset"] {
+                width: 48%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            input[type="submit"] {
+                background-color: #28a745;
+                margin-right: 4%;
+            }
+            input[type="reset"] {
+                background-color: #dc3545;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            table, th, td {
+                border: 1px solid #ccc;
+                padding: 10px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="form-container">
+                <p class="username"><b>Hi, Welcome to CROP YIELD PREDICTION</b></p>
+                <form id="cropForm">
+                    <label for="crops">Types of Crop:</label>
+                    <select id="crops" name="croplist">
+                        <option value="">Select Crop</option>
+                        <option value="1">1. Arecanut</option>
+                        <option value="2">2. Arhar/Tur</option>
+                        <option value="3">3. Castor seed</option>
+                        <option value="4">4. Coconut</option>
+                        <option value="5">5. Cotton(lint)</option>
+                        <option value="6">6. Dry chillies</option>
+                        <option value="7">7. Gram</option>
+                        <option value="8">8. Jute</option>
+                        <option value="9">9. Linseed</option>
+                        <option value="10">10. Maize</option>
+                        <option value="11">11. Mesta</option>
+                        <option value="12">12. Niger seed</option>
+                        <option value="13">13. Onion</option>
+                        <option value="14">14. Other Rabi pulses</option>
+                        <option value="15">15. Potato</option>
+                        <option value="16">16. Rapeseed & Mustard</option>
+                        <option value="17">17. Rice</option>
+                        <option value="18">18. Sesamum</option>
+                        <option value="19">19. Small millets</option>
+                        <option value="20">20. Sugarcane</option>
+                        <option value="21">21. Sweet potato</option>
+                        <option value="22">22. Tapioca</option>
+                        <option value="23">23. Tobacco</option>
+                        <option value="24">24. Turmeric</option>
+                        <option value="25">25. Wheat</option>
+                        <option value="26">26. Bajra</option>
+                        <option value="27">27. Black pepper</option>
+                        <option value="28">28. Cardamom</option>
+                        <option value="29">29. Coriander</option>
+                        <option value="30">30. Garlic</option>
+                        <option value="31">31. Ginger</option>
+                        <option value="32">32. Groundnut</option>
+                        <option value="33">33. Horse-gram</option>
+                        <option value="34">34. Jowar</option>
+                        <option value="35">35. Ragi</option>
+                        <option value="36">36. Cashewnut</option>
+                        <option value="37">37. Banana</option>
+                        <option value="38">38. Soyabean</option>
+                        <option value="39">39. Barley</option>
+                        <option value="40">40. Khesari</option>
+                        <option value="41">41. Masoor</option>
+                        <option value="42">42. Moong(Green Gram)</option>
+                        <option value="43">43. Other Kharif pulses</option>
+                        <option value="44">44. Safflower</option>
+                        <option value="45">45. Sannhamp</option>
+                        <option value="46">46. Sunflower</option>
+                        <option value="47">47. Urad</option>
+                        <option value="48">48. Peas & beans (Pulses)</option>
+                        <option value="49">49. Other oilseeds</option>
+                        <option value="50">50. Other Cereals</option>
+                        <option value="51">51. Cowpea(Lobia)</option>
+                        <option value="52">52. Oilseeds total</option>
+                        <option value="53">53. Guar seed</option>
+                        <option value="54">54. Other Summer Pulses</option>
+                        <option value="55">55. Moth</option>
+                    </select>
+                    <label for="seasons">Season:</label>
+                    <select id="seasons" name="seasons">
+                        <option value="">Select Season</option>
+                        <option value="1">1. Whole Year</option>
+                        <option value="2">2. Kharif</option>
+                        <option value="3">3. Rabi</option>
+                        <option value="4">4. Autumn</option>
+                        <option value="5">5. Summer</option>
+                        <option value="6">6. Winter</option>
+                    </select>
+                    <label for="states">State:</label>
+                    <select id="states" name="states">
+                        <option value="">Select State</option>
+                        <option value="1">1. Andhra Pradesh</option>
+                        <option value="2">2. Arunachal Pradesh</option>
+                        <option value="3">3. Assam</option>
+                        <option value="4">4. Bihar</option>
+                        <option value="5">5. Chhattisgarh</option>
+                        <option value="6">6. Delhi</option>
+                        <option value="7">7. Goa</option>
+                        <option value="8">8. Gujarat</option>
+                        <option value="9">9. Haryana</option>
+                        <option value="10">10. Himachal Pradesh</option>
+                        <option value="11">11. Jammu and Kashmir</option>
+                        <option value="12">12. Jharkhand</option>
+                        <option value="13">13. Karnataka</option>
+                        <option value="14">14. Kerala</option>
+                        <option value="15">15. Madhya Pradesh</option>
+                        <option value="16">16. Maharashtra</option>
+                        <option value="17">17. Manipur</option>
+                        <option value="18">18. Meghalaya</option>
+                        <option value="19">19. Mizoram</option>
+                        <option value="20">20. Nagaland</option>
+                        <option value="21">21. Odisha</option>
+                        <option value="22">22. Puducherry</option>
+                        <option value="23">23. Punjab</option>
+                        <option value="24">24. Sikkim</option>
+                        <option value="25">25. Tamil Nadu</option>
+                        <option value="26">26. Telangana</option>
+                        <option value="27">27. Tripura</option>
+                        <option value="28">28. Uttar Pradesh</option>
+                        <option value="29">29. Uttarakhand</option>
+                        <option value="30">30. West Bengal</option>
+                    </select>
+                    <label for="area">Area: (in hectares)</label><br>
+                    <input type="text" id="area" name="area" value=""><br>
+                    <label for="Annual_Rainfall">Annual Rainfall: (in mm)</label><br>
+                    <input type="text" id="Annual_Rainfall" name="Annual_Rainfall" value=""><br>
+                    <label for="Fertilizer">Fertilizer: (in kilograms)</label><br>
+                    <input type="text" id="Fertilizer" name="Fertilizer" value=""><br>
+                    <label for="Pesticide">Pesticide: (in kilograms)</label><br>
+                    <input type="text" id="Pesticide" name="Pesticide" value=""><br><br>
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </form>
+            </div>
+            <div class="table-container">
+                <table id="resultTable">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Crop</th>
+                            <th>Season</th>
+                            <th>State</th>
+                            <th>Area</th>
+                            <th>Annual Rainfall</th>
+                            <th>Fertilizer</th>
+                            <th>Pesticide</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            document.getElementById('cropForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var cropSelect = document.getElementById('crops');
+                var seasonSelect = document.getElementById('seasons');
+                var stateSelect = document.getElementById('states');
+                var area = document.getElementById('area').value;
+                var annualRainfall = document.getElementById('Annual_Rainfall').value;
+                var fertilizer = document.getElementById('Fertilizer').value;
+                var pesticide = document.getElementById('Pesticide').value;
+
+                var cropText = cropSelect.options[cropSelect.selectedIndex].text;
+                var seasonText = seasonSelect.options[seasonSelect.selectedIndex].text;
+                var stateText = stateSelect.options[stateSelect.selectedIndex].text;
+
+                var table = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+                var newRow = table.insertRow();
+
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                var cell4 = newRow.insertCell(3);
+                var cell5 = newRow.insertCell(4);
+                var cell6 = newRow.insertCell(5);
+                var cell7 = newRow.insertCell(6);
+                var cell8 = newRow.insertCell(7);
+
+                cell1.innerHTML = table.rows.length;
+                cell2.innerHTML = cropText;
+                cell3.innerHTML = seasonText;
+                cell4.innerHTML = stateText;
+                cell5.innerHTML = area;
+                cell6.innerHTML = annualRainfall;
+                cell7.innerHTML = fertilizer;
+                cell8.innerHTML = pesticide;
+
+                // Clear form inputs
+                document.getElementById('cropForm').reset();
+            });
+        </script>
+    </body>
+</html>
