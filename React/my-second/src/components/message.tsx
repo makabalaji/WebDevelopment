@@ -1,7 +1,7 @@
 function Message() {
     const name ='Maka Balaji';
 return <>
- <p>My mother has blue eyes.</p>
+<p> <h1>WELCOME TO MY PAGE</h1></p>
   <h1>Hello {name}!..</h1>
 </>
 }
