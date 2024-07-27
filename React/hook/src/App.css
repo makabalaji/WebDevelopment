@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   }
 }
 body{
-  background-image: url("components/contact.jpg");
+  background-image: url("components/123.jpg");
   background-repeat: no-repeat;
   background-size: 1500px;
   backface-visibility: flex;
@@ -51,13 +51,21 @@ table, th, td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: left;
+  color: aqua;
 }
 label {
+  color: aquamarine;
   font-size: 18px;
   display: block;
   margin-bottom: 5px;
 }
 textarea{
   color: #61dafb;
-  text-decoration-color: black;
+  text-decoration-color: white;
+}
+h1{
+  color: #61dafb;
+}
+.text-warning {
+  color: #ffc107;
 }

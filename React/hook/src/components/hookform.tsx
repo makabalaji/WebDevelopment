@@ -8,13 +8,27 @@ interface FormData {
 }
 
 export const HookForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>();
     const [data, setData] = useState<FormData[]>([]);
+    const [editIdx, setEditIdx] = useState<number | null>(null);
 
     const onSubmit = (formData: FieldValues) => {
-        setData([...data, formData as FormData]);
-        console.log(formData);
-    }
+        if (editIdx !== null) {
+            const updatedData = data.map((item, index) => (index === editIdx ? formData as FormData : item));
+            setData(updatedData);
+            setEditIdx(null);
+        } else {
+            setData([...data, formData as FormData]);
+        }
+    };
+
+    const handleEdit = (index: number) => {
+        setEditIdx(index);
+        const rowData = data[index];
+        setValue('name', rowData.name);
+        setValue('age', rowData.age);
+        setValue('contact', rowData.contact);
+    };
 
     return (
         <>
@@ -33,11 +47,13 @@ export const HookForm = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="contact" className="form-label">Contact</label>
-                    <input {...register('contact', { required: true, minLength: 10 })} id="contact" type="number" className="form-control" />
+                    <input {...register('contact', { required: true, minLength: 10 ,maxLength:13})} id="contact" type="number" className="form-control" />
                     {errors.contact?.type === 'required' && <p className='text-danger'>Contact field is required.</p>}
                     {errors.contact?.type === 'minLength' && <p className='text-danger'>Contact must be at least 10 digits.</p>}
+                    {errors.contact?.type === 'maxLength' && <p className='text-danger'>Contact should be more 13 digits.</p>}
+                    {errors.contact?.type === 'maxLength' && <p className='text-danger'>Please cehck the Number.</p>}
                 </div>
-                <button className="btn btn-primary" type="submit">Submit</button>
+                <button className="btn btn-primary" type="submit">{editIdx !== null ? 'Update' : 'Submit'}</button>
             </form>
 
             <table className="table mt-3">
@@ -46,6 +62,7 @@ export const HookForm = () => {
                         <th>Name</th>
                         <th>Age</th>
                         <th>Contact</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,10 +71,13 @@ export const HookForm = () => {
                             <td>{item.name}</td>
                             <td>{item.age}</td>
                             <td>{item.contact}</td>
+                            <td>
+                                <button className="btn btn-warning" onClick={() => handleEdit(index)}>Edit</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </>
     );
-}
+};
